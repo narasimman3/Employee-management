@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Payroll List</title>
+</head>
+<body>
+
+<h2>Payroll Records</h2>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Basic</th>
+        <th>Bonus</th>
+        <th>Deduction</th>
+        <th>Net Salary</th>
+        <th>Pay Date</th>
+        <th>Payment Mode</th>
+    </tr>
+
+    <tr th:each="p : ${payrolls}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.employeeId}"></td>
+        <td th:text="${p.empname}"></td>
+        <td th:text="${p.basicSalary}"></td>
+        <td th:text="${p.bonus}"></td>
+        <td th:text="${p.deduction}"></td>
+        <td th:text="${p.netSalary}"></td>
+        <td th:text="${p.payDate}"></td>
+        <td th:text="${p.paymentMode}"></td>
+    </tr>
+</table>
+
+<style>
+    /* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+    background: #bbf9ff;
+    padding: 20px;
+}
+
+/* ===== HEADING ===== */
+h2 {
+    text-align: center;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #bff3f4;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ===== TABLE HEAD ===== */
+th {
+    background: #3dc1f9;
+    color: #fff;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ===== TABLE DATA ===== */
+td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+/* ===== ROW STRIPES ===== */
+tr:nth-child(even) {
+    background: #e0f7fa;
+}
+
+tr:hover {
+    background: #d0f0f5;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    table, th, td {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    table, th, td {
+        display: block;
+        width: 100%;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    th {
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    td {
+        text-align: left;
+        padding-left: 10px;
+        border: none;
+        display: block;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        display: inline-block;
+        width: 120px;
+    }
+}
+
+</style>
+
+</body>
+</html>

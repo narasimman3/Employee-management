@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <link rel="stylesheet" href="/employee.css">
+</head>
+<body>
+
+<form action="/employee" method="post" onsubmit="return validateForm()">
+    <h2>Employee Registration</h2><br>
+
+    <label>Name:</label><br>
+    <input type="text" name="name" id="name" placeholder="Enter Your Name" required><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" id="email" placeholder="Enter Your Email" required><br>
+
+    <label>Address:</label><br>
+    <input type="text" name="address" id="address" placeholder="Enter Your address" required><br>
+
+    <label>Gender:</label><br>
+    <input type="radio" name="gender" id="gender" value="Male">Male
+    <input type="radio" name="gender" id="gender" value="Female">Female <br>
+
+    <label>Phone:</label><br>
+    <input type="text" name="phone" id="phone" placeholder="Enter Your Phone" required><br>
+
+    <label>Department:</label><br>
+    <input type="text" name="department" id="department" placeholder="Enter Department" required><br>
+
+    <label>Position:</label><br>
+    <input type="text" name="position" id="position" placeholder="Enter Position" required><br>
+
+    <label>Date of Joining:</label><br>
+    <input type="date" name="dateofJoining" id="dateofJoining" required><br>
+
+    <label>Status:</label><br>
+    <select name="status" id="status" required>
+        <option value="">-- Select Status --</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="On Leave">On Leave</option>
+    </select>
+    <br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<style>
+    /* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+    background: #bbf9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ===== FORM CONTAINER ===== */
+form {
+    background: #bff3f4;
+    width: 420px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ===== TITLE ===== */
+form h2 {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+/* ===== LABELS ===== */
+label {
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* ===== INPUTS ===== */
+input,
+select {
+    width: 100%;
+    padding: 9px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #ff8c00;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.4);
+}
+
+/* ===== RADIO BUTTONS ===== */
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+label + input[type="radio"] {
+    margin-left: 5px;
+}
+
+/* ===== BUTTON ===== */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #3dc1f9;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e67600;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== MOBILE FRIENDLY ===== */
+@media (max-width: 500px) {
+    form {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+</style>
+
+<script>
+    function validateForm() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+
+        if (name === "" || email === "") {
+            alert("Please fill all required fields.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</body>
+</html>
